@@ -1,28 +1,28 @@
 import collections
 import re
 
-def join_no_double_counting(word_list):
-    """
-    This function joins the list of strings in word_list while only keeping unique occurrences of different letters. 
-    So it does not overcount the frequency of letters if they appear multiple times in the same word. 
-    """
-    joined_string = ""
-    for word in word_list:
-        occured = {}
-        for let in word:
-            if let in occured:
-                continue
-            else:
-                joined_string += let
-                occured[let] = 1
-    return joined_string
+
 
 def guess(dict_of_words, current_dictionary, guessed_letters, word): # word input example: "_ p p _ e "
     ###############################################
     # Replace with your own "guess" function here #
     ###############################################
 
-    
+    def join_no_double_counting(word_list):
+        """
+        This function joins the list of strings in word_list while only keeping unique occurrences of different letters. 
+        So it does not overcount the frequency of letters if they appear multiple times in the same word. 
+        """
+        joined_string = ""
+        for word in word_list:
+            occured = {}
+            for let in word:
+                if let in occured:
+                    continue
+                else:
+                    joined_string += let
+                    occured[let] = 1
+        return joined_string
     
     # Making lists of letters that the target word definitely does not contain or definitely contains. 
     excluded_letters = []
