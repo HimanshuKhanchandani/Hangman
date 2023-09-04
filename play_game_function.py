@@ -7,8 +7,8 @@ def play_game(word, train_dictionary, verbose = False):
         current_word += "_ "
     current_word += "_"
     guessed_letters = []
-    while (incorrect_guesses < 6) or (current_word[::2] != word):
-        current_guess = guess_function.guess(train_dictionary, train_dictionary, guessed_letters, current_word)
+    while (incorrect_guesses < 6) and (current_word[::2] != word):
+        current_guess = guess_function.guess(train_dictionary, guessed_letters, current_word)
         guessed_letters += [current_guess]
         if current_guess in word:
             for i in range(len(word) - 1):

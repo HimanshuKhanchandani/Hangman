@@ -1,9 +1,9 @@
 import collections
 import re
+import operator
 
 
-
-def guess(dict_of_words, current_dictionary, guessed_letters, word): # word input example: "_ p p _ e "
+def guess(dict_of_words, guessed_letters, word): # word input example: "_ p p _ e "
     ###############################################
     # Replace with your own "guess" function here #
     ###############################################
@@ -42,7 +42,6 @@ def guess(dict_of_words, current_dictionary, guessed_letters, word): # word inpu
     len_word = len(clean_word)
     
     # grab current dictionary of possible words from self object, initialize new possible words dictionary to empty
-    current_dictionary = current_dictionary
     new_dictionary = []
     
     """
@@ -53,7 +52,7 @@ def guess(dict_of_words, current_dictionary, guessed_letters, word): # word inpu
     """
     
 
-    for dict_word in current_dictionary:
+    for dict_word in dict_of_words:
         # continue if the word is not of the appropriate length
         if len(dict_word) != len_word:
             continue
@@ -73,7 +72,9 @@ def guess(dict_of_words, current_dictionary, guessed_letters, word): # word inpu
    
 
     # overwrite old possible words dictionary with updated version
-    current_dictionary = new_dictionary
+    
+    
+    
 
     # count occurrence of all characters in possible word matches
     full_dict_string = join_no_double_counting(new_dictionary)
@@ -402,7 +403,9 @@ def guess(dict_of_words, current_dictionary, guessed_letters, word): # word inpu
     
     # Finally if still no word matches in training dictionary, default back to ordering of full dictionary
     if guess_letter == '!':
-        sorted_letter_count = dict_of_words_common_letter_sorted
+        full_dict_string = join_no_double_counting(dict_of_words)
+        c = collections.Counter(full_dict_string)
+        sorted_letter_count = c.most_common()    
         for letter,instance_count in sorted_letter_count:
             if letter not in guessed_letters:
                 guess_letter = letter
