@@ -23,8 +23,10 @@ def play_game(word, train_dictionary, verbose = False):
             
     
     if incorrect_guesses == 6:
-        print('The algorithm lost')
+        if verbose:
+            print('The algorithm lost')
         return False
     elif current_word[::2] == word:
-        print('The algorithm won')
+        if verbose:
+            print('The algorithm won')
         return True
