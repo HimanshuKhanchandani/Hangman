@@ -2,7 +2,7 @@
 ### Algorithm to play Hangman. 
 In this project, I write an algorithm to guess the next word in the Hangman game, given the current state of the board, and the guessed letters so far. The version I am playing is the one where we lose the game after 6 incorrect guesses. The guess_function.py file contains details on how the algorithm guesses the next word. The details of hthe guess function are given below. 
 
-###Details of the guess_function
+### Details of the guess_function
 I will outline a series of steps on how to guess the next letter such that the probability that it appears in the word conditional on everything we know about the board is highest. For all the points mentioned here, I will highlight in the python file where the corresponding code is.
 1. First of all, I define a function to join different words while only counting every
 letter in the word once. So that if a letter appears more than once in a given word, we still only want to count
