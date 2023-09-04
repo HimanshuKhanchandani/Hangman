@@ -3,12 +3,12 @@
 In this project, I write an algorithm to guess the next word in the Hangman game, given the current state of the board, and the guessed letters so far. The version I am playing is the one where we lose the game after 6 incorrect guesses. The guess_function.py file contains details on how the algorithm guesses the next word. The details of hthe guess function are given below. 
 
 ### Details of the guess_function
-I will outline a series of steps on how to guess the next letter such that the probability that it appears in the word conditional on everything we know about the board is highest. For all the points mentioned here, I will highlight in the python file where the corresponding code is.
-1. First of all, I define a function to join different words while only counting every
+I will outline a series of steps on how to guess the next letter such that the probability that it appears in the word conditional on everything we know about the board is highest. For all the points mentioned here, I will highlight in the python file where the corresponding code is. The basic idea is to look for all the words in the training dictionary that closely match the word we are trying to guess. To do that, we make a list of all the words that match the masked string(i.e with the correctly guessed letters filled in, so a..le for apple once we correctly guess a l and e).  Then find the frequency of occurence of various letters in those words, and guess the letter with the highes frequency as the next letter. 
+1. First of all, to count the frequency of letters in a given a list of words, I define a function to join different words together into a big string while only counting every
 letter in the word once. So that if a letter appears more than once in a given word, we still only want to count
 it once. We care about how many different words it appears in, so when we guess it, we cover most
 possible words. 
-2. To begin with, I make a list of words that match the masked string but do not contain the excluded
+1. Then I make a list of words that match the masked string but do not contain the excluded
 letters (the failed guesses so far). I then guess a letter based on frequencies obtained from this list.
 However, to avoid overfitting, I only guess a letter that appears in more than a certain number of words
 (number of blanks left).
